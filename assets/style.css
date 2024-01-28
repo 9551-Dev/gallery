@@ -77,6 +77,7 @@ img:hover {
     transition: transform 0.3s ease-out;
 }
 .image-viewer {
+    z-index: 3;
     display: none;
     position: fixed;
     top: 0;
@@ -87,6 +88,7 @@ img:hover {
     justify-content: center;
     align-items: center;
 }
+
 .image-viewer img {
     max-width: 90%;
     max-height: 90%;
