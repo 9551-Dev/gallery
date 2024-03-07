@@ -1,4 +1,5 @@
 import os
+import sys
 import configparser
 import shutil
 
@@ -14,10 +15,10 @@ def check_folder_exists(folder_path):
         return False
     return True
 
-def read_config():
+def read_config(config_path):
     print("Reading configuration...")
     config = configparser.ConfigParser()
-    config.read('cfg.ini')
+    config.read(config_path)
 
     title        = config.get('Settings', 'title')
     image_folder = config.get('Settings', 'image_folder')
@@ -98,7 +99,12 @@ def generate_html(title, image_folder, template_path, css_path, js_path, output_
     print(f'Generated {output_file_path} successfully.')
 
 if __name__ == '__main__':
-    title, image_folder, template_path, css_path, js_path, output_folder, images_directory_name, core_directory_name, output_file_name = read_config()
+    if len(sys.argv) != 2:
+        print("Usage: python script.py [config_path]")
+        exit(1)
+
+    config_path = sys.argv[1]
+    title, image_folder, template_path, css_path, js_path, output_folder, images_directory_name, core_directory_name, output_file_name = read_config(config_path)
 
     print(f'\nTitle: {title}')
     print(f'Image Folder: {image_folder}')

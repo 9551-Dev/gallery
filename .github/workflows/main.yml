@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run python script
       run: |
-        python3 ./main.py
+        python3 ./gallery_generator.py configs/main_page.ini
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
